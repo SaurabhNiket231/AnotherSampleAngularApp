@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>Customer Form</h2>
+  <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" required 
+        [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+        <div [hidden]="firstName.valid || firstName.pristine"
+          class="alert alert-danger">
+            First Name is required
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" required
+      [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
+      <div [hidden]="lastName.valid || lastName.pristine"
+          class="alert alert-danger">
+            Last Name is required
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="mobileNumber">Mobile Number</label>
+      <input type="number" class="form-control" id="mobileNumber" required
+      [(ngModel)]="model.mobileNumber" name="mobileNumber" #mobileNumber="ngModel">
+        <div [hidden]="mobileNumber.valid || mobileNumber.pristine"
+          class="alert alert-danger">
+            Mobile Number is required
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Date Of Birth</label>
+      <input type="date" class="form-control" id="dateOfBirth" 
+      [(ngModel)]="model.dateOfBirth" name="dateOfBirth">
+    </div>
+    <div class="form-group">
+      <label for="aadharNum">Aadhar Number</label>
+      <input type="number" class="form-control" id="aadharNum" 
+      [(ngModel)]="model.aadharNum" name="aadharNum">
+    </div>
+    <div class="form-group">
+      <label for="panNum">PAN Number</label>
+      <input type="text" class="form-control" id="panNum" 
+      [(ngModel)]="model.panNum" name="panNum">
+    </div>
+    <div class="form-group">
+      <label for="bankAccountNo">Account Number</label>
+      <input type="number" class="form-control" id="bankAccountNo" 
+      [(ngModel)]="model.bankAccountNo" name="bankAccountNo">
+    </div>
+    <div class="form-group">
+      <label for="bankName">Bank Name</label>
+      <input type="text" class="form-control" id="bankName" 
+      [(ngModel)]="model.bankName" name="bankName">
+    </div>
+    <div class="form-group">
+      <label for="ifscCode">IFSC Code</label>
+      <input type="text" class="form-control" id="ifscCode" 
+        [(ngModel)]="model.ifscCode" name="ifscCode">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" id="gender" required
+      [(ngModel)]="model.gender" name="gender" #gender="ngModel">
+        <option *ngFor="let gen of genders" [value]="gen">{{gen}}</option>
+      </select>
+      
+        <div [hidden]="gender.valid || gender.pristine"
+          class="alert alert-danger">
+            Gender is required
+        </div>
+      
+    </div>
+    <button type="button" class="btn btn-primary" (click)="newCustomer(); customerForm.reset()">New Customer</button>
+    <button type="submit" class="btn btn-success" [disabled]="!customerForm.form.valid">submit</button>
+  </form>
+</div>
