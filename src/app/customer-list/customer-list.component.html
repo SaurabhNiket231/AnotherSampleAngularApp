@@ -1,0 +1,15 @@
+<h2>Customers List</h2>
+<ul class="customers">
+  <li *ngFor="let customer of customers" (click)="onSelect(customer)" [class.selected]="customer === selectedCustomer">
+    <span class="badge">{{customer.id}}</span>{{customer.firstName}} {{customer.lastName}}
+  </li>
+</ul>
+<div *ngIf="selectedCustomer && fullName">
+ 
+  <h2>{{selectedCustomer.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedCustomer.id}}</div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="fullName" placeholder="fullName">
+    </label>
+  </div>
